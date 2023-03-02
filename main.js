@@ -12,6 +12,11 @@ if(process.env.NODE_ENV !== 'production'){
 
 let mainWindow;
 
+ipcMain.on('dato', (event, dato) => {
+  console.log(dato) // msg from web page
+  //window.webContents.send('pong', 'hi web page') // send to web page
+})
+
 app.on('ready',() => {
   mainWindow= new BrowserWindow({});
   mainWindow.loadURL(url.format({
@@ -22,7 +27,8 @@ app.on('ready',() => {
       nodeIntegration: true,
       contextIsolation: false,
       nodeIntegrationInWorker: true,                                                  
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      preload: path.join(__dirname, 'js/preload.js'),
     }
   }))
 
