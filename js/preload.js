@@ -1,9 +1,15 @@
 const { ipcRenderer}= require('electron');
 
+console.log("eih!")
+
 document.addEventListener("DOMContentLoaded", function(){
 
-    let dato= "mi dato de preload"
+    document.getElementById("boton").addEventListener("click", () =>{
 
-    window.ipcRenderer.send('dato', dato)
+        let dato= "mi dato de preload"
+
+        ipcRenderer.send('dato', dato)
+
+    })
 
 })

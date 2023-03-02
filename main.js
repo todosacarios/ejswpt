@@ -12,11 +12,6 @@ if(process.env.NODE_ENV !== 'production'){
 
 let mainWindow;
 
-ipcMain.on('dato', (event, dato) => {
-  console.log(dato) // msg from web page
-  //window.webContents.send('pong', 'hi web page') // send to web page
-})
-
 app.on('ready',() => {
   mainWindow= new BrowserWindow({});
   mainWindow.loadURL(url.format({
@@ -26,7 +21,7 @@ app.on('ready',() => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: path.resolve( './js/preload.js'),
+      preload: path.join( __dirname,'/js/preload.js'),
     }
   }))
 
@@ -65,9 +60,16 @@ app.on('ready',() => {
     })
   }
 
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-  })
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
+})
+
+ipcMain.on('dato', (event, dato) => {
+
+  console.log(dato) // msg from web page
+  //window.webContents.send('pong', 'hi web page') // send to web page
+  
+})
 
 function openFile(){
 
