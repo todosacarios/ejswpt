@@ -26,9 +26,7 @@ app.on('ready',() => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      nodeIntegrationInWorker: true,                                                  
-      enableRemoteModule: true,
-      preload: path.join(__dirname, 'js/preload.js'),
+      preload: path.resolve( './js/preload.js'),
     }
   }))
 
