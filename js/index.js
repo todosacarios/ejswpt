@@ -1,44 +1,46 @@
 
-const fs = require('fs');
-const csv = require('fast-csv');
-const { stringify } = require('querystring');
+console.log(window.miValor)
 
-window.addEventListener("load", inicio)
+// const fs = require('fs');
+// const csv = require('fast-csv');
+// const { stringify } = require('querystring');
 
-async function inicio(){
+// window.addEventListener("load", inicio)
 
-    let datos= await processCSV();
-    console.log(datos);
-}
+// async function inicio(){
 
-async function processCSV(){
+//     let datos= await processCSV();
+//     console.log(datos);
+// }
 
-    const data = []
-    const headersCSV=['A',' B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS1','AT1','AU','AV','AW','AX','AY','AZ','BA'];
-    var finalDataRow=new Array();
-    const finalData=[];
+// async function processCSV(){
+
+//     const data = []
+//     const headersCSV=['A',' B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS1','AT1','AU','AV','AW','AX','AY','AZ','BA'];
+//     var finalDataRow=new Array();
+//     const finalData=[];
     
-    fs.createReadStream('./payslips.csv')
-        .pipe(csv.parse({ headers: false }))
-        .on('error', error => console.error(error))
-        .on('data', row => data.push(row))
-        //.on('end', () => console.log(data));
+//     fs.createReadStream('./payslips.csv')
+//         .pipe(csv.parse({ headers: false }))
+//         .on('error', error => console.error(error))
+//         .on('data', row => data.push(row))
+//         //.on('end', () => console.log(data));
     
-        .on('end', () => {
+//         .on('end', () => {
     
-            for(let i=1; i < data.length; i++){
+//             for(let i=1; i < data.length; i++){
     
-                finalDataRow=[];
+//                 finalDataRow=[];
                 
-                for(let z=0; z < headersCSV.length; z++){
+//                 for(let z=0; z < headersCSV.length; z++){
     
-                    finalDataRow[headersCSV[z]]=data[i][z];
-                }
+//                     finalDataRow[headersCSV[z]]=data[i][z];
+//                 }
     
-                finalData.push(finalDataRow)
-            }
+//                 finalData.push(finalDataRow)
+//             }
     
-            return finalData;
-        });
+//             return finalData;
+//         });
 
-}
+// }
